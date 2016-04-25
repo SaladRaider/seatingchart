@@ -1,3 +1,4 @@
+<?php require('config.php'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <!-- Code by Peter Veerman -->
@@ -7,9 +8,6 @@
 <head>
 	<!-- Website Title -->
 	<title>Seating Chart Program</title>
-	
-	<!-- Website Icon -->
-	<link rel="shortcut icon" href="images/logo-tiny.ico" />
 	
 	<!-- CSS Link -->
 	<link rel="stylesheet" type="text/css" media="all" href="main.css" />
@@ -27,7 +25,7 @@
 	<meta charset="UTF-8" />
 	
 	<!-- JQuery Reference (Don't worry about this) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" ></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" ></script>-->
 </head>
 
 
@@ -40,9 +38,20 @@
 <span id="about"></span>
 	<!-- Make Major Changes Inside Here!!! -->
 	<div class="container">
-		<h2>About</h2>
+		<h2>About (Edit)</h2>
 		<p>
-		<iframe width="720" height="405" src="https://www.youtube.com/embed/HlJHdl7lq04" frameborder="0" allowfullscreen></iframe>
+		<?php 
+
+		$result = $conn->query("SELECT * FROM `users` WHERE `users_id`='1'");
+		
+		if($result)
+		{
+			$info = $result->fetch_array();
+			echo "Username: " . $info['username'];
+		}
+		?>
+		</p>
+		<p>
 		</p>
 		<p>
 		1st: <b>$240</b><br />
@@ -64,6 +73,8 @@
 	</div>
 </div>
 <!-- End Of Content -->
+
+<script src="./scripts/js/scripts.min.js" type="text/javascript" charset="utf-8" async defer></script>
 
 </body>
 
